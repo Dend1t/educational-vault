@@ -9,6 +9,6 @@ public class Interval {
     }
     // Метод создаёт новый интервал со значениями по умолчанию
     public static Interval defaultInterval(){
-        return new Interval(-1, -1);
+        return new Interval(-1, 0);
     }
 }
