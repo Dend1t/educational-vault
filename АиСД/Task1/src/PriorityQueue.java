@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 
@@ -12,11 +13,12 @@ public class PriorityQueue {
         }
     }
 
-    static class Element {
-        public int order;
-        public Object data;
 
-        public Element(int o, Object d) {
+    private static class Element<D> {
+        public int order;
+        D data;
+
+        public Element(int o, D d) {
             this.order = o;
             this.data = d;
         }
@@ -27,11 +29,11 @@ public class PriorityQueue {
     }
 
     private final Comparator comparator = new SortByPriority();
-    private LinkedList<Element> queue = new LinkedList<Element>();
+    private Element[] queue = new Element[0];
 
     public void printThisQueue() {
         for (Element i : this.queue) {
-            System.out.println();
+            System.out.println(i.toString());
         }
     }
 
@@ -43,21 +45,22 @@ public class PriorityQueue {
                 return;
             }
         }
-        this.queue.add(new Element(priority, data));
-        this.queue.sort(comparator);
+        this.queue = Arrays.copyOf(queue,queue.length+1);
+        this.queue[queue.length-1] = new Element(priority,data);
+        Arrays.sort(queue, comparator);
     }
 
     public String extract_minimum() {
-        if (this.queue.isEmpty()) {
+        if (this.queue.length == 0) {
             return "Queue is empty.";
         } else {
-            Element i = this.queue.getFirst();
-            this.queue.removeFirst();
+            Element i = this.queue[0];
+            this.queue = Arrays.copyOfRange(queue,1,queue.length);
             return i.toString();
         }
     }
 
     public int length() {
-        return this.queue.size();
+        return this.queue.length;
     }
 }
