@@ -39,12 +39,21 @@ public class PriorityQueue {
 
 
     public void insert(int priority, Object data) {
-        for (Element i : this.queue) {
-            if (i.order == priority) {
-                //System.out.println("Priority is in queue.");
+        int low = 0;
+        int high = this.queue.length-1;
+
+        while (low <= high) {
+            int mid = low  + ((high - low) / 2);
+            if (this.queue[mid].order < priority) {
+                low = mid + 1;
+            } else if (this.queue[mid].order > priority) {
+                high = mid - 1;
+            } else if (this.queue[mid].order == priority) {
+                System.out.println("Priority is in queue.");
                 return;
             }
         }
+        
         this.queue = Arrays.copyOf(queue,queue.length+1);
         this.queue[queue.length-1] = new Element(priority,data);
         Arrays.sort(queue, comparator);
