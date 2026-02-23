@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.LinkedList;
 
 public class PriorityQueue<T> {
     static class SortByPriority implements Comparator {
