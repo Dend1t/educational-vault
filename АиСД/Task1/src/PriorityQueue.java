@@ -2,11 +2,18 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 
-public class PriorityQueue {
+public class PriorityQueue<T> {
     static class SortByPriority implements Comparator {
         public int compare(Object o1, Object o2) {
             Element element1 = (Element) o1;
             Element element2 = (Element) o2;
+
+            if (o1 == null) {
+                return 1;
+            }
+            if (o2 == null) {
+                return -1;
+            }
 
             if (element1.order == element2.order) return 0;
             return element1.order > element2.order ? 1 : -1;
@@ -23,13 +30,20 @@ public class PriorityQueue {
             this.data = d;
         }
 
+        public D getData() {
+            return data;
+        }
+
         public String toString() {
             return this.order + ": " + this.data;
         }
     }
 
     private final Comparator comparator = new SortByPriority();
-    private Element[] queue = new Element[0];
+    private int lastIndex = 0;
+    int queueCapacity = 8;
+    private Element[] queue = new Element[queueCapacity];
+
 
     public void printThisQueue() {
         for (Element i : this.queue) {
@@ -38,38 +52,43 @@ public class PriorityQueue {
     }
 
 
-    public void insert(int priority, Object data) {
+    public void insert(int priority, T data) {
         int low = 0;
-        int high = this.queue.length-1;
+        int high = lastIndex - 1;
 
         while (low <= high) {
-            int mid = low  + ((high - low) / 2);
+            int mid = low + ((high - low) / 2);
             if (this.queue[mid].order < priority) {
                 low = mid + 1;
             } else if (this.queue[mid].order > priority) {
                 high = mid - 1;
             } else if (this.queue[mid].order == priority) {
-                System.out.println("Priority is in queue.");
+//                System.out.println("Priority is in queue.");
                 return;
             }
         }
-        
-        this.queue = Arrays.copyOf(queue,queue.length+1);
-        this.queue[queue.length-1] = new Element(priority,data);
+        this.queue[lastIndex] = new Element(priority, data);
         Arrays.sort(queue, comparator);
+        lastIndex++;
+        if (queueCapacity == lastIndex) {
+            queueCapacity *= 2;
+            queue = Arrays.copyOf(queue, queueCapacity);
+        }
     }
 
-    public String extract_minimum() {
-        if (this.queue.length == 0) {
-            return "Queue is empty.";
+    public T extract_minimum() {
+        if (lastIndex == 0) {
+            return null;
         } else {
+            lastIndex--;
             Element i = this.queue[0];
-            this.queue = Arrays.copyOfRange(queue,1,queue.length);
-            return i.toString();
+            this.queue[0] = null;
+            Arrays.sort(queue, comparator);
+            return (T) i.getData();
         }
     }
 
     public int length() {
-        return this.queue.length;
+        return lastIndex;
     }
 }
