@@ -1,2 +1,2 @@
 # My Personal Vault
-![rigby-cube](https://github.com/user-attachments/assets/b96283c6-e5d4-48fd-8834-5eb826e299d0)
+<img width="256" height="320" alt="image" src="https://github.com/user-attachments/assets/a30872c6-293f-4636-8e3c-28bef8c393e5" />
