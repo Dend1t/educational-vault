@@ -1,2 +1,2 @@
 # My Personal Vault
-<img width="256" height="320" alt="image" src="https://github.com/user-attachments/assets/a30872c6-293f-4636-8e3c-28bef8c393e5" />
+![watchthisswag-catswag](https://github.com/user-attachments/assets/09b1ce02-dc1e-496d-9d6a-dcb861df49ec)
