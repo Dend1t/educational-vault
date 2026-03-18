@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 
 int main() {
     float n = 1;
