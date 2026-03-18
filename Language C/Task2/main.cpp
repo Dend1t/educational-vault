@@ -2,10 +2,13 @@
 #include <math.h>
 
 int main() {
+    float acc;
+    printf("Enter acurcity: ");
+    scanf("%f", &acc);
     float n = 1;
     float temp = n / ( 2 * n * (2 * n + 1));
     float sum = 0;
-    while (n <= 8) {
+    while (temp <= acc) {
         sum += temp;
         temp = temp / n * (n+1) / (2 * n + 2) / ( 2 * n + 3);
         n++;
