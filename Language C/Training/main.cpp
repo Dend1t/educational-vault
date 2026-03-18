@@ -2,6 +2,9 @@
 
 int main(int argc, char const *argv[])
 {
-    printf("hello \n");
+    int a, b;
+    float d;
+    scanf("%d %d %f", &a, &b, &d);
+    printf("%d %d %f \n", a, b, d);
     return 0;
 }
