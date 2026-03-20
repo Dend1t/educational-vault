@@ -20,8 +20,6 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         }
     }
 
-
-
     protected SimpleLinkedListItem<T> head = null;
     protected SimpleLinkedListItem<T> tail = null;
     protected int count = 0;
@@ -141,6 +139,25 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         }
     }
 
+    //O(n)
+    public void reverse() {
+        if (isEmpty())
+            return;
+        tail = head;
+        head = reverseRecursive(head);
+    }
+
+    private SimpleLinkedListItem<T> reverseRecursive(SimpleLinkedListItem<T> node) {
+        if (node == null || node.next == null) {
+            return node;
+        }
+        SimpleLinkedListItem<T> newHead = reverseRecursive(node.next);
+        node.next.next = node;
+        node.next = null;
+
+        return newHead;
+    }
+
     // O(1)
     public void clear() {
         head = tail = null;
@@ -159,23 +176,23 @@ public class SimpleLinkedList<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-//        class SimpleLinkedListIterator implements Iterator<T> {
-//            SimpleLinkedListItem<T> curr = head;
-//
-//            @Override
-//            public boolean hasNext() {
-//                return curr != null;
-//            }
-//
-//            @Override
-//            public T next() {
-//                T value = curr.value;
-//                curr = curr.next;
-//                return value;
-//            }
-//        }
-//
-//        return new SimpleLinkedListIterator();
+        // class SimpleLinkedListIterator implements Iterator<T> {
+        // SimpleLinkedListItem<T> curr = head;
+        //
+        // @Override
+        // public boolean hasNext() {
+        // return curr != null;
+        // }
+        //
+        // @Override
+        // public T next() {
+        // T value = curr.value;
+        // curr = curr.next;
+        // return value;
+        // }
+        // }
+        //
+        // return new SimpleLinkedListIterator();
 
         return new Iterator<T>() {
             SimpleLinkedListItem<T> curr = head;
@@ -194,7 +211,6 @@ public class SimpleLinkedList<T> implements Iterable<T> {
         };
     }
 }
-
 
 class SimpleLinkedListException extends Exception {
     public SimpleLinkedListException(String error) {
