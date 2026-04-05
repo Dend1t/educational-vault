@@ -4,7 +4,7 @@
 int main(int argc, char const *argv[])
 {
     int arr_1[] = {10, 20, 30, 40, 50};
-    int *head_1 = arr_1;
+    int *head_1 = arr_1;    
 
     for (int i = 0; i < sizeof(arr_1) / sizeof(arr_1[0]) - 1; i++)
     {
