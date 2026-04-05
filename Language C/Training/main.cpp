@@ -1,16 +1,18 @@
-#include<iostream>
-#include<math.h>
+#include <iostream>
+#include <math.h>
 
 int main(int argc, char const *argv[])
 {
-    float a,b;
-    scanf("%f %f", &a, &b);
-    if(pow(b,2) + pow(a,2) > pow(a+b,2) ){
-        printf("Сумма квадратов больше %f \n " , pow(a,2));
-    }
-    else{
-        a = a<0 ? a : pow(a,2);
-        printf("%f",a);
-    }
+    // int arr[] = {1, 2, 3, 4, 5, 6, 7};
+    // int *p = arr;
+    // for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+    // {
+    //     printf(" Element %d: = %d , Adres: %p\n", i, *(p + i), (p + i));
+    // }
+    
+
+
+
+
     return 0;
 }
