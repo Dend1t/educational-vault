@@ -30,14 +30,14 @@ public class GUI {
             textArea1.setText(null);
             readTableData();
             textArea1.append("\n--- Результат (Standard Queue) ---\n");
-            TaskLogic.solve(new ArrayDeque<>(), textArea1);
+            textArea1.append(TaskLogic.solve(new ArrayDeque<>()));
         });
 
         button2.addActionListener(e -> {
             textArea1.setText(null);
             readTableData();
             textArea1.append("\n--- Результат (Custom Queue) ---\n");
-            TaskLogic.solve(new SimpleDeque<>(), textArea1);
+            textArea1.append(TaskLogic.solve(new SimpleDeque<>()));
         });
 
         buttonAdd.addActionListener(e -> {

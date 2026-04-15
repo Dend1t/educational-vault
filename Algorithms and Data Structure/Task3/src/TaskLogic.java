@@ -1,4 +1,3 @@
-import javax.swing.JTextArea;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
@@ -29,7 +28,8 @@ public class TaskLogic {
         buyers.add(new Buyer(id, s, t, n));
     }
 
-    static void solve(Deque<Buyer> queue, JTextArea textArea) {
+    static String solve(Deque<Buyer> queue) {
+        String toOutput = "";
         buyers.sort(new SortByArrival());
 
         queue.addAll(buyers);
@@ -44,9 +44,9 @@ public class TaskLogic {
 
             currentBuyer.q = startTime + currentBuyer.n;
             currentTime = currentBuyer.q;
-
-            textArea.append(currentBuyer + "\n");
-            textArea.append("--------------------------------\n");
+            toOutput +=  (currentBuyer + "\n");
+            toOutput += ("--------------------------------\n");
         }
+        return toOutput;
     }
 }
