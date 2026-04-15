@@ -10,16 +10,14 @@ public class Main {
         // самописные стек и очередь
         Deque<Integer> myStack = new SimpleDeque<Integer>();
         Deque<Integer> myQueue = new SimpleDeque<Integer>();
-<<<<<<< HEAD
-        // Теперь можем передавать в один и тот же метод и стандартные и свои реализации. Метод не знает что именно мы ему передали, т.к. работает через интерфейс
-        TaskLogic.solve(standardStack, standardQueue);
-        TaskLogic.solve(myStack, myQueue);
-        new Buyer(2, 2, 2, 2).print();
-=======
 
         // Теперь можем передавать в один и тот же метод и стандартные и свои реализации. Метод не знает что именно мы ему передали, т.к. работает через интерфейс
         TaskLogic.solve(standardStack, standardQueue);
         TaskLogic.solve(myStack, myQueue);
->>>>>>> a74cc7f664f7323359cb067f4f2ffa9510fe1fbf
+        new Buyer(2, 2, 2, 2).print();
+
+        // Теперь можем передавать в один и тот же метод и стандартные и свои реализации. Метод не знает что именно мы ему передали, т.к. работает через интерфейс
+        TaskLogic.solve(standardStack, standardQueue);
+        TaskLogic.solve(myStack, myQueue);
     }
 }
