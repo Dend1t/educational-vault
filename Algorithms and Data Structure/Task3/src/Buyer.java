@@ -3,6 +3,7 @@ public class Buyer {
     Integer s;
     Integer t;
     Integer n;
+    Integer a = s + t;
 
     public Buyer(Integer id, Integer s, Integer t, Integer n) {
         this.id = id;
