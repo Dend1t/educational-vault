@@ -29,7 +29,7 @@ public class TaskLogic {
     }
 
     static String solve(Deque<Buyer> queue) {
-        String toOutput = "";
+        StringBuilder toOutput = new StringBuilder();
         buyers.sort(new SortByArrival());
 
         queue.addAll(buyers);
@@ -44,9 +44,9 @@ public class TaskLogic {
 
             currentBuyer.q = startTime + currentBuyer.n;
             currentTime = currentBuyer.q;
-            toOutput +=  (currentBuyer + "\n");
-            toOutput += ("--------------------------------\n");
+            toOutput.append(currentBuyer).append("\n");
+            toOutput.append("--------------------------------\n");
         }
-        return toOutput;
+        return toOutput.toString();
     }
 }
